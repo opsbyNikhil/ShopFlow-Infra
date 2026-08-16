@@ -1,17 +1,22 @@
 variable "vpc_info" {
-    type = object({
-        vpc_id = string
-        vpc_cidr = string
-    })
+  type = object({
+    vpc_id   = string
+    vpc_cidr = string
+  })
 }
 
 variable "subnet_info" {
-    type = object({
-        subnets = list(object({
-            subnet_cidr = list(string)
-            subnet_az = list(string)
-            subnet_names = list(string)
-        }))
-    })
-    
+  type = object({
+    frontend = list(object({
+      subnet_name = string
+      subnet_az   = string
+      subnet_cidr = string
+    }))
+
+    backend = list(object({
+      subnet_name = string
+      subnet_az   = string
+      subnet_cidr = string
+    }))
+  })
 }
